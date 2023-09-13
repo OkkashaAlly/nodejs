@@ -13,5 +13,5 @@ const batman = new SuperHero('batman')
 console.log(batman.getName())
 
 const superman = new SuperHero('superman')
-console.log(superman.getName())
+console.log(superman.getName())  
 

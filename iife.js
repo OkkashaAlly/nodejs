@@ -1,7 +1,7 @@
-(function () {
-  const superHero = "batman";
-  console.log(`Hello world from ${superHero}`);
-})();
+// (function (require,exports, module, __filename, __dirname) {
+//   const superHero = "batman";
+//   console.log(`Hello world from ${superHero}`);
+// })();
 
 (function () {
   const superHero = "superman";

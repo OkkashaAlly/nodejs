@@ -1,4 +1,4 @@
-const {add, subtract} = require('./math.js')
+const data = require("./data.json");
 
-console.log(add(1, 2));
-console.log(subtract(1, 2));
+console.log(data);
+console.log("Hello");

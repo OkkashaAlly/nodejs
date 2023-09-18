@@ -24,13 +24,29 @@ const fs = require("fs");
 //   const html = fs.createReadStream(__dirname + "/index.html").pipe(res)
 // });
 
-const server = http.createServer((req, res) => {
-  const name= "Okkasha"
-  res.writeHead(200, { "Content-Type": "text/html" });
-  let html = fs.readFileSync("./index.html", "utf-8");
-  html = html.replace("{{name}}", name)
-  res.end(html);
+// const server = http.createServer((req, res) => {
+//   const name= "Okkasha"
+//   res.writeHead(200, { "Content-Type": "text/html" });
+//   let html = fs.readFileSync("./index.html", "utf-8");
+//   html = html.replace("{{name}}", name)
+//   res.end(html);
 
+// });
+
+const server = http.createServer((req, res) => {
+  if (req.url === "/") {
+    res.writeHead(200, { "Content-Type": "text/plain" });
+    res.end("Home Page");
+  } else if (req.url === "/about") {
+    res.writeHead(200, { "Content-Type": "text/plain" });
+    res.end("About Page");
+  } else if (req.url === "/api") {
+    res.writeHead(200, { "Content-Type": "application/json" });
+    res.end(JSON.stringify({ name: "Okkasha", age: 23 }));
+  } else {
+    res.writeHead(404, { "Content-Type": "text/plain" });
+    res.end("Page Not Found");
+  }
 });
 
 server.listen(5000, () => {

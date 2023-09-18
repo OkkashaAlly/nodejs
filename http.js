@@ -1,20 +1,29 @@
-const http = require('http')
+const http = require("http");
+const fs = require("fs");
 
 // const server = http.createServer((req, res)=> {
-//   res.writeHead(200, {'Content-Type': 'text/html'})
-//   res.end('<p>Hello World</p>')
+//   res.writeHead(200, {'Content-Type': 'text/plain'})
+//   res.end('Hello World')
 // })
 
-const server = http.createServer((req, res)=> {
-  const superHero = {
-    name: 'Batman',
-    age: 30,
-    city: 'Gotham'
-  }
-  res.writeHead(200, {'Content-Type': 'application/json'})
-  res.end(JSON.stringify(superHero))
-})
+// const server = http.createServer((req, res)=> {
+//   const superHero = {
+//     name: 'Batman',
+//     age: 30,
+//     city: 'Gotham'
+//   }
+//   res.writeHead(200, {'Content-Type': 'application/json'})
+//   res.end(JSON.stringify(superHero))
+// })
 
-server.listen(5000, ()=> {
-  console.log('Server running...')
-})
+const server = http.createServer((req, res) => {
+  // const html = fs.readFileSync("./index.html", "utf-8");
+  res.writeHead(200, { "Content-Type": "text/html" });
+  // res.end(html);
+
+  const html = fs.createReadStream(__dirname + "/index.html").pipe(res)
+});
+
+server.listen(5000, () => {
+  console.log("Server running...");
+});

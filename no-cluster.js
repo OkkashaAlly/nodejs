@@ -5,9 +5,10 @@ const server = http.createServer((req, res) => {
     res.writeHead(200, { "Content-Type": "text/plain" });
     res.end("Home Page");
   } else if (req.url === "/slow-page") {
+    let j = 0
     // simulate slower page by delaying response
     for (let i = 0; i < 140000; i++) {
-      console.log(i)
+      j++
     }
     res.writeHead(200, { "Content-Type": "text/plain" });
     res.end("Slow page");
